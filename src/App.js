@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+// import Header from './Components/Header.js';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App(){
 
@@ -54,10 +56,15 @@ function App(){
     }
 
     function getClient(event) {
-        const jsonToken = { "Header": "Bearer " + token }
+        const jsonToken = {
+            headers: {
+                "accept": "*/*",
+                "Authorization": "Bearer " + token
+            }
+        }
         console.log(jsonToken);
         event.preventDefault()  
-        axios.get("http://www.ggsport.somee.com/Client/Get", {jsonToken})
+        axios.get("http://www.ggsport.somee.com/Client/Get", jsonToken)
         .then((res) => {
             console.log(res)
         })
@@ -78,15 +85,15 @@ function App(){
             
             
             <p style={{color:"red"}} id ="errorcum"></p>
-            <br></br>
+            <br/>
             <button id ="login">Войти</button>
 
-            <br></br><br></br><br></br>
+            <br/><br/><br/>
             <p id = "token">токена нет!</p>
         </form>
         
         <form onSubmit={getClient}>
-            <br></br><br></br><br></br>
+            <br/><br/><br/>
             <button id ="info" >Клиентская информация</button>
         </form>
     </div>)
