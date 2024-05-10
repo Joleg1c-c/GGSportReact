@@ -1,17 +1,18 @@
 import React from 'react';
-import './Header.css';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
     return (
-        <header className="header">
+        <header>
             <img src="logo.png" alt="Company Logo" className="logo" />
             <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                </ul>
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/about">About</NavLink>
             </nav>
+
+                <div className='auth'>
+                    <NavLink to="/login">Войти</NavLink>
+                </div>
         </header>
     );
 }
