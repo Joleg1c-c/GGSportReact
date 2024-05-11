@@ -41,7 +41,7 @@ function AppLogin() {
     }
     
     function makeToken(){
-        document.getElementById("token").innerHTML = "" + token;
+        document.getElementById("token").innerHTML = "Вы вошли!";
     }
     
     function makeErrorEntrance(){
@@ -85,11 +85,11 @@ function AppLogin() {
                     <button id ="login">Войти</button>
 
                     <br/><br/><br/>
-                    <p id = "token">токена нет!</p>
+                    <p id = "token">вы не вошли!</p>
                 </form>
                 
                 <form onSubmit={getClient}>
-                    <br/><br/><br/>
+
                     <button id ="info" >Клиентская информация</button>
                 </form>
             </div>
