@@ -61,7 +61,7 @@ function AppLogin() {
         }
         console.log(jsonToken);
         event.preventDefault()  
-        axios.get("http://www.ggsport.somee.com/Client/Get", jsonToken)
+        axios.get("http://www.ggsport.somee.com/Client", jsonToken)
         .then((res) => {
             console.log(res)
         })
@@ -70,7 +70,7 @@ function AppLogin() {
     return (
         <main>
             <div className="Login">
-                <h1>Попытка Войти на сервер</h1>
+                <h1>Вход</h1>
 
                 <form onSubmit={popitRegister}>
                     <p>Логин</p>

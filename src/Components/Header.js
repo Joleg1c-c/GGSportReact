@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 function Header() {
     return (
         <header>
-            <img src="logo.png" alt="Company Logo" className="logo" />
+            <img src={require("./img/logo.jpg")} alt="Company Logo" className="logo"  />
             <nav>
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
@@ -12,6 +12,7 @@ function Header() {
 
                 <div className='auth'>
                     <NavLink to="/login">Войти</NavLink>
+                    <NavLink to="/regis">Регистрация</NavLink>
                 </div>
         </header>
     );
