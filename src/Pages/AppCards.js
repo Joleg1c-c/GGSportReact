@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './cards.css'
+import './css/cards.css'
 
 function AppCards() {
     const [cards, setCards] = useState(getCards()) 

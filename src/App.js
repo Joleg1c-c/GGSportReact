@@ -4,10 +4,10 @@ import Footer from './Components/Footer.js';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import AppAbout from './Pages/AppAbout.js';
-import AppHome from './Pages/AppHome.js';
+// import AppHome from './Pages/AppHome.js';
 import AppLogin from './Pages/AppLogin.js';
 import AppRegister from './Pages/AppRegister.js';
-import AppCards from './Pages/Cards/AppCards.js';
+import AppCards from './Pages/AppCards.js';
 
 function App(){
     return (

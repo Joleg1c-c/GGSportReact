@@ -1,42 +1,62 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import "./css/register.css"
 
 function AppRegister() {
     const baseURLlogin = "http://www.ggsport.somee.com/Authentication/Register";
+    var password = "";
 
     const [post, setPost] = useState({
         email: '',
         password: '',
-        passwordConfirm: ''
+        lastName: "",
+        firstName: "",
+        patronymic: ""
     })
 
     function popitRegister(event) {
         event.preventDefault()
         console.log(post);
-        // axios.post(baseURLlogin, post)
-        //     .then((res) => {
-        //         console.log(res)
-        //         makeNoErrorEntrance()
-        //         hideBlockRegis()
-        //     })
-        //     .catch(function (err) {
-        //         if (err.response) {
-        //             makeErrorEntrance()
-        //             console.log(err.message);
-        //             console.log(err.name);
+        axios.post(baseURLlogin, post)
+            .then((res) => {
+                console.log(res)
+                makeNoErrorEntrance()
+                hideBlockRegis()
+            })
+            .catch(function (err) {
+                if (err.response) {
+                    makeErrorEntrance()
+                    console.log(err.message);
+                    console.log(err.name);
 
-        //         } else if (err.request) {
-        //             console.log(err.request);
+                } else if (err.request) {
+                    console.log(err.request);
 
-        //         } else {
-        //             console.log("Error:", err.message);
-        //         }
-        //         console.log(err);
-        //     })
+                } else {
+                    console.log("Error:", err.message);
+                }
+                console.log(err);
+            })
     }
 
     const makePost = (event) => {
         setPost({ ...post, [`${event.target.name}`]: event.target.value })
+        if (event.target.name === "password"){
+            setPassword(event)
+        }
+    }
+
+    const setPassword = (event) =>{
+        console.log("setPassword")
+        password = event.target.value
+        console.log(password)
+    }
+    
+
+    const checkPassword = (event) => {
+        console.log(password === event.target.value);
+        console.log(password)
+        console.log(event.target.value)
     }
 
     function makeErrorEntrance() {
@@ -44,7 +64,7 @@ function AppRegister() {
     }
 
     function makeNoErrorEntrance() {
-        document.getElementById("errorcum").innerHTML = "";
+        document.getElementById("errorcum").innerHTML = "Вы успешно зарегестрировались!";
     }
 
     function hideBlockRegis(){
@@ -72,6 +92,23 @@ function AppRegister() {
                 <h1>Регистрация</h1>
 
                 <form onSubmit={popitRegister} id='RegisConteiner' style={{visibility: "visible"}}>
+                    <div className='registerClientInfo'>
+                        <div className='registerClientInfoBlock'>
+                            <p>Имя</p>
+                            <input name="firstName" onChange={makePost} type='email' required></input>
+                        </div>
+                        
+                        <div className='registerClientInfoBlock'>
+                            <p>Фамилия</p>
+                            <input name="lastName" onChange={makePost} type='email' required></input>
+                        </div>
+                        
+                        <div className='registerClientInfoBlock'>
+                            <p>Отчество</p>
+                            <input name="patronymic" onChange={makePost} type='email' required></input>
+                        </div>
+                    </div>
+
                     <p>Логин</p>
                     <input name="email" onChange={makePost} type='email' required></input>
 
@@ -79,7 +116,7 @@ function AppRegister() {
                     <input name="password" onChange={makePost}  type='password' required></input>
 
                     <p>Подтвердите пароль</p>
-                    <input name="passwordConfirm" onChange={makePost} type='password' required></input>
+                    <input name="passwordConfirm" onChange={checkPassword} type='password' required></input>
 
 
                     <p style={{ color: "red" }} id="errorcum"></p>

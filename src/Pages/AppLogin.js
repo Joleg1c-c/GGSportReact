@@ -6,8 +6,8 @@ function AppLogin() {
     var token = "";
     
     const [post, setPost] = useState({
-    email: '',
-    password: ''  
+        email: '',
+        password: ''  
     })
     
     function popitRegister(event) {
