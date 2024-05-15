@@ -4,7 +4,6 @@ import "./css/register.css"
 
 function AppRegister() {
     const baseURLlogin = "http://www.ggsport.somee.com/Authentication/Register";
-    var password = "";
 
     const [post, setPost] = useState({
         email: '',
@@ -14,49 +13,49 @@ function AppRegister() {
         patronymic: ""
     })
 
+    const [passwordConfirm, setpasswordConfirm] = useState('')
+
     function popitRegister(event) {
         event.preventDefault()
         console.log(post);
-        axios.post(baseURLlogin, post)
-            .then((res) => {
-                console.log(res)
-                makeNoErrorEntrance()
-                hideBlockRegis()
-            })
-            .catch(function (err) {
-                if (err.response) {
-                    makeErrorEntrance()
-                    console.log(err.message);
-                    console.log(err.name);
+        if (checkPassword()){
+            axios.post(baseURLlogin, post)
+                .then((res) => {
+                    console.log(res)
+                    makeNoErrorEntrance()
+                    hideBlockRegis()
+                })
+                .catch(function (err) {
+                    if (err.response) {
+                        makeErrorEntrance()
+                        console.log(err.message);
+                        console.log(err.name);
 
-                } else if (err.request) {
-                    console.log(err.request);
+                    } else if (err.request) {
+                        console.log(err.request);
 
-                } else {
-                    console.log("Error:", err.message);
-                }
-                console.log(err);
-            })
+                    } else {
+                        console.log("Error:", err.message);
+                    }
+                    console.log(err);
+                })
+        }
+        else{
+            console.log("ААА, неверно продублировали пароль!");
+        }
     }
 
     const makePost = (event) => {
         setPost({ ...post, [`${event.target.name}`]: event.target.value })
-        if (event.target.name === "password"){
-            setPassword(event)
-        }
-    }
-
-    const setPassword = (event) =>{
-        console.log("setPassword")
-        password = event.target.value
-        console.log(password)
-    }
+    }   
     
+    const setPassComf = (event) => {
+        setpasswordConfirm(event.target.value)
+    }
 
-    const checkPassword = (event) => {
-        console.log(password === event.target.value);
-        console.log(password)
-        console.log(event.target.value)
+    const checkPassword = () => {
+        return (post.password === passwordConfirm);
+
     }
 
     function makeErrorEntrance() {
@@ -71,27 +70,12 @@ function AppRegister() {
         document.getElementById("RegisConteiner").style.visibility = 'hidden'
     }
 
-    // function getClient(event) {
-    //     const jsonToken = {
-    //         headers: {
-    //             "accept": "*/*",
-    //             "Authorization": "Bearer " + token
-    //         }
-    //     }
-    //     console.log(jsonToken);
-    //     event.preventDefault()
-    //     axios.get("http://www.ggsport.somee.com/Client", jsonToken)
-    //         .then((res) => {
-    //             console.log(res)
-    //         })
-    //         .catch(function (err) { console.log(err); })
-    // }
     return (
         <main>
             <div className="Regis">
                 <h1>Регистрация</h1>
 
-                <form onSubmit={popitRegister} id='RegisConteiner' style={{visibility: "visible"}}>
+                <form id='RegisConteiner' >
                     <div className='registerClientInfo'>
                         <div className='registerClientInfoBlock'>
                             <p>Имя</p>
@@ -116,12 +100,12 @@ function AppRegister() {
                     <input name="password" onChange={makePost}  type='password' required></input>
 
                     <p>Подтвердите пароль</p>
-                    <input name="passwordConfirm" onChange={checkPassword} type='password' required></input>
+                    <input name="passwordConfirm" onChange={setPassComf} type='password' required></input>
 
 
                     <p style={{ color: "red" }} id="errorcum"></p>
                     <br />
-                    <button id="login" onClick={hideBlockRegis}>Зарегистрироваться</button>
+                    <button type="button" id="login" onClick={popitRegister}>Зарегистрироваться</button>
 
                 </form>
 
