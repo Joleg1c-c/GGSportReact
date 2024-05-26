@@ -14,6 +14,7 @@ function Header() {
                 <div className='auth'>
                     <NavLink to="/login">Войти</NavLink>
                     <NavLink to="/regis">Регистрация</NavLink>
+                    <NavLink to="/profile">Профиль</NavLink>
                 </div>
         </header>
     );

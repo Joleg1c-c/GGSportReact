@@ -8,6 +8,7 @@ import AppAbout from './Pages/AppAbout.js';
 import AppLogin from './Pages/AppLogin.js';
 import AppRegister from './Pages/AppRegister.js';
 import AppCards from './Pages/AppCards.js';
+import AppProfile from './Pages/AppProfile.js';
 
 function App(){
     return (
@@ -19,6 +20,7 @@ function App(){
                 <Route path='/about' element={<AppAbout/>} />
                 <Route path='/login' element={<AppLogin/>} />
                 <Route path='/regis' element={<AppRegister/>} />
+                <Route path='/profile' element={<AppProfile/>} />
             </Routes>
             <Footer/>
         </Router>

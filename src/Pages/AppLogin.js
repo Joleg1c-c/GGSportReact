@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from "jwt-decode";
+import { redirect } from "react-router-dom";
+
 
 
 function AppLogin() {
@@ -26,6 +28,7 @@ function AppLogin() {
             makeToken()
             makeNoErrorEntrance()
             login(token)
+            return redirect("/profile");
         })
         .catch(function(err) {
             if (err.response){
@@ -60,9 +63,9 @@ function AppLogin() {
         document.getElementById("errorcum").innerHTML = "";
     }
 
-    const logout = () =>{
-        cookies.remove("jwt_token")
-    }
+    // const logout = () =>{
+    //     cookies.remove("jwt_token")
+    // }
 
     const login = (jwt_token) => {
         const decoded = jwtDecode(jwt_token)
@@ -77,65 +80,52 @@ function AppLogin() {
         return (ansv !== undefined)
     }
     
-    function getClient(event) {
-        const jsonToken = {
-            headers: {
-                "accept": "*/*",
-                "Authorization": "Bearer " + cookies.get("jwt_token")
-            }
-        }
-        console.log(jsonToken);
-        event.preventDefault()  
-        axios.get("http://www.ggsport.somee.com/Client", jsonToken)
-        .then((res) => {
-            console.log(res)
-        })
-        .catch(function(err) {console.log(err);} )
+    // function getClient(event) {
+    //     const jsonToken = {
+    //         headers: {
+    //             "accept": "*/*",
+    //             "Authorization": "Bearer " + cookies.get("jwt_token")
+    //         }
+    //     }
+    //     console.log(jsonToken);
+    //     event.preventDefault()  
+    //     axios.get("http://www.ggsport.somee.com/Client", jsonToken)
+    //     .then((res) => {
+    //         console.log(res)
+    //     })
+    //     .catch(function(err) {console.log(err);} )
+    // }
+    
+    if (checkLogin()) {
+        return redirect("/profile")
     }
+
     return (
         <main>
-            {checkLogin() ? (
-                    <div>
-                        <h1>Приветсвуем </h1>
-                        <form onSubmit={getClient}>
-                            <button id ="info" >Клиентская информация</button>
-                        </form>
-                        <br/>
-                        
-                        <form onSubmit={logout}>
-                            <button id ="info2" >Разлогиниться</button>
-                        </form>
-                        <br/>
+            <div className="Login">
+                <h1>Вход</h1>
 
-                        <form onSubmit={checkLogin}>
-                            <button id ="info3" >проверить печеньку</button>
-                        </form>
-                    </div>
-                ) : (
-                    <div className="Login">
-                        <h1>Вход</h1>
+                <form onSubmit={popitRegister}>
+                    <p>Логин</p>
+                    <input name = "email" onChange={makePost}></input>
 
-                        <form onSubmit={popitRegister}>
-                            <p>Логин</p>
-                            <input name = "email" onChange={makePost}></input>
+                    <p>Пароль</p>
+                    <input name = "password" onChange={makePost}></input>
+                    
+                    
+                    <p style={{color:"red"}} id ="errorcum"></p>
+                    <br/>
+                    <button id ="login">Войти</button>
 
-                            <p>Пароль</p>
-                            <input name = "password" onChange={makePost}></input>
-                            
-                            
-                            <p style={{color:"red"}} id ="errorcum"></p>
-                            <br/>
-                            <button id ="login">Войти</button>
+                    <br/><br/><br/>
+                    <p id = "token">вы не вошли!</p>
 
-                            <br/><br/><br/>
-                            <p id = "token">вы не вошли!</p>
+                </form>
+                    <form onSubmit={checkLogin}>
+                        <button id ="info3" >проверить печеньку</button>
+                    </form>
+            </div>
 
-                        </form>
-                            <form onSubmit={checkLogin}>
-                                <button id ="info3" >проверить печеньку</button>
-                            </form>
-                    </div>
-            )}
         </main>
         )   
 }
