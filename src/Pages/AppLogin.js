@@ -3,10 +3,19 @@ import React, { useState } from 'react';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from "jwt-decode";
 import { redirect } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
 
 
 function AppLogin() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(isLogin()){
+          navigate("/profile")
+        }
+      }, []);
+
     const baseURLlogin = "http://www.ggsport.somee.com/Authentication/Login";
     var token = "";
     var error = "";
@@ -28,7 +37,7 @@ function AppLogin() {
             makeToken()
             makeNoErrorEntrance()
             login(token)
-            return redirect("/profile");
+            window.location.reload();
         })
         .catch(function(err) {
             if (err.response){
@@ -74,7 +83,7 @@ function AppLogin() {
         cookies.set("jwt_token", jwt_token, {expires: new Date(decoded.exp * 1000)})
     }
 
-    const checkLogin = () => {
+    const isLogin = () => {
         const ansv = cookies.get("jwt_token")
         console.log(ansv !== undefined)
         return (ansv !== undefined)
@@ -95,10 +104,6 @@ function AppLogin() {
     //     })
     //     .catch(function(err) {console.log(err);} )
     // }
-    
-    if (checkLogin()) {
-        return redirect("/profile")
-    }
 
     return (
         <main>
@@ -121,7 +126,7 @@ function AppLogin() {
                     <p id = "token">вы не вошли!</p>
 
                 </form>
-                    <form onSubmit={checkLogin}>
+                    <form onSubmit={isLogin}>
                         <button id ="info3" >проверить печеньку</button>
                     </form>
             </div>

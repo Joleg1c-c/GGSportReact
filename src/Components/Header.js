@@ -1,20 +1,27 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import "./header.css"
+import Cookies from 'universal-cookie';
 
 function Header() {
+    const cookie = new Cookies();
+    
     return (
         <header>
             <img src={require("./img/logo.jpg")} alt="Company Logo" className="logo"  />
             <nav className='HeaderInfo'>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/about">About</NavLink>
+                <NavLink to="/">Главная</NavLink>
+                <NavLink to="/about">О нас</NavLink>
             </nav>
 
                 <div className='auth'>
-                    <NavLink to="/login">Войти</NavLink>
                     <NavLink to="/regis">Регистрация</NavLink>
-                    <NavLink to="/profile">Профиль</NavLink>
+                    
+                    {cookie.get("jwt_token") === undefined ? 
+                        <NavLink to="/login">Войти</NavLink>
+                        : 
+                        <NavLink to="/profile">Профиль</NavLink>
+                    }
                 </div>
         </header>
     );

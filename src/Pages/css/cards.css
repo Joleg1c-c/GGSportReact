@@ -13,7 +13,11 @@
     height: auto;
     padding: 10px;
     margin: 0px 10px;
-    text-align: center;
+    text-align: left;
+}
+
+.buttonCard{
+    position: left;
 }
 
 .cards:hover .card{

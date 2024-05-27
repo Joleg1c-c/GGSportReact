@@ -1,14 +1,22 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
 
 
 
 const AppProfile = () => {
     const navigate = useNavigate();
 
-    const cookies = new Cookies()
+    useEffect(() => {
+        if(!isLogin()){
+          navigate("/login")
+        }
+      }, []); 
 
+    
+    const cookies = new Cookies()
+    
     const logout = () =>{
         cookies.remove("jwt_token")
     }
@@ -29,15 +37,10 @@ const AppProfile = () => {
         .catch(function(err) {console.log(err);} )
     }
 
-    const checkLogin = () => {
+    const isLogin = () => {
         const ansv = cookies.get("jwt_token")
         console.log(ansv !== undefined)
         return (ansv !== undefined)
-    }
-
-    if (!checkLogin()) {
-        navigate('/login')
-
     }
 
     return (
