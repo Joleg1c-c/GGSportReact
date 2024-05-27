@@ -1,30 +1,152 @@
-.cards{
-    align-items: center;
-    display: flex;
-    justify-content: space-evenly;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-}
-
 .card {
-    box-sizing: border-box;
-    background-color: gray;
-    height: auto;
-    padding: 10px;
-    margin: 0px 10px;
+    width: 300px;
+    min-height: 350px;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.33);
+    display: flex;
+    flex-direction: column; /* Размещаем элементы в колонку */
+    border-radius: 4px;
+    transition: 0.2s;
+    position: relative;
     text-align: left;
-}
+  }
+  
+  /* При наведении на карточку - меняем цвет тени */
+  /* .card:hover {
+    box-shadow: 4px 8px 16px hsl(46.82, 100%, 50%, 1)   ;
+  }
+   */
+  .card__top {
+    flex: 0 0 220px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
+    position: relative;
+    overflow: hidden; /* Скрываем, что выходит за пределы */
+  }
+  
+  /* Контейнер для картинки */
+  .card__image {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card__image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Встраиваем картинку в контейнер card__image */
+    transition: 0.2s;
+  }
+  
+  /* При наведении - увеличиваем картинку */
+  .card__image:hover > img {
+    transform: scale(1.1);
+  }
+  
+  .card__bottom {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto; /* Занимаем всю оставшуюся высоту карточки */
+    padding: 10px;
+  }
 
-.buttonCard{
-    position: left;
-}
+  .card__names{
+    margin-bottom: 15px
+  }
+  
+  /* .card__name {
+    display: flex;
+    margin-bottom: 10px;
+    flex: 0 0 50%; /* Размещаем цены равномерно в две колонки */
+  /* }
+  
+  .card__price::after {
+    content: "₽";
+    margin-left: 4px;
+    position: relative;
+  } */
 
-.cards:hover .card{
-    filter: blur(10px);
-}
+  .card__name {
+    font-weight: 700;
+    font-size: 19px;
+    color: #414141;
+    display: flex;
+    flex-wrap: wrap-reverse;
+  }
+  
+  /* .card__name::before {
+    content: "Со скидкой";
+    font-weight: 400;
+    font-size: 13px;
+    color: #bfbfbf;
+  } */
+  
+  /* .card__price--common {
+    font-weight: 400;
+    font-size: 17px;
+    color: #606060;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: flex-end;
+  }
+  
+  .card__price--common::before {
+    content: "Обычная";
+    font-weight: 400;
+    font-size: 13px;
+    color: #bfbfbf;
+  } */
+  
+  .card__title {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 150%;
+    color: #414141;
+  }
+  
+  /* .card__title:hover {
+    color: #ff6633;
+  } */
+  
+  .card__add {
+    display: block;
+    width: 100%;
+    font-weight: 400;
+    font-size: 17px;
+    color: #000000;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    cursor: pointer; /* Меняем курсор при наведении */
+    transition: 0.2s;
+    margin-top: auto; /* Прижимаем кнопку к низу карточки */
+  }
+  
+  .card__add:hover {
+    border: 1px solid #000000;
+    background-color: #000000;
+    color: #fff;
+  }
 
-.cards .card:hover{
-    filter: blur(0px);
-}
 
+.cards {
+    /* display: grid; */
+    /* Автоматически заполняем на всю ширину grid-контейнера */
+    /* grid-template-columns: repeat(auto-fill, 350px); */
+    display: flex;
+    width: 100%;
+    max-width: 1000px; /* Ширина grid-контейнера */
+    justify-content: center;
+    justify-items: center; /* Размещаем карточку по центру */
+    column-gap: 30px; /* Отступ между колонками */
+    row-gap: 40px; /* Отступ между рядами */
+    margin: 0 auto;
+}
+.back_cards{
+    background-color: #fff;
+    min-height: 100vh;
+    color: black;
+}

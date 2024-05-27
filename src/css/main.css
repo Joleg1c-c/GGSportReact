@@ -14,6 +14,7 @@ body {
     align-items: center;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden ;
+    text-align:center;
 }
 
 input {
@@ -33,7 +34,6 @@ form button {
 main {
     padding: 24px;
     border-radius: 16px;
-    text-align: center;
     min-height: 100vh;
     position: relative;
 }

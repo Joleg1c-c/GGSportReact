@@ -13,6 +13,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1",
     "react-scripts": "^5.0.1",
+    "react-spinners": "^0.13.8",
     "react-token-auth": "^2.3.8",
     "universal-cookie": "^7.1.4",
     "web-vitals": "^2.1.4"

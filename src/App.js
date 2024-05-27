@@ -9,6 +9,7 @@ import AppLogin from './Pages/AppLogin.js';
 import AppRegister from './Pages/AppRegister.js';
 import AppCards from './Pages/AppCards.js';
 import AppProfile from './Pages/AppProfile.js';
+import AppConfirm from './Pages/AppConfirm.js';
 
 function App(){
     return (
@@ -21,6 +22,7 @@ function App(){
                 <Route path='/login' element={<AppLogin/>} />
                 <Route path='/regis' element={<AppRegister/>} />
                 <Route path='/profile' element={<AppProfile/>} />
+                <Route path='/comform' element={<AppConfirm/>} />
             </Routes>
             <Footer/>
         </Router>

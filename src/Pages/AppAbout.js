@@ -1,3 +1,5 @@
+import "./css/about.css"
+
 function AppAbout() {
     return (
     <main>

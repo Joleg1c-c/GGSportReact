@@ -1,6 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, CSSProperties} from 'react';
 import './css/cards.css'
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
+import { FadeLoader } from 'react-spinners';
+
+const override: CSSProperties = {
+    display: "center",
+    margin: "0 auto",
+    borderColor: "hsl(46.82, 100%, 50%, 1)",
+  };
+  
 
 function AppCards() {
     const [cards, setCards] = useState([]) 
@@ -31,31 +40,52 @@ function AppCards() {
     }
 
         return (
-            <main>
-                {/* <button onClick={()=>handleadd()}>Add</button> */}
-                <br/><br/>
-                
+            <div className='back_cards'>
+                <br/>
+                <h1>Клубные карты</h1>
                 <div className="cards">
                     {
-                        cards === null ?
+                        cards.length === 0 ?
                         <div>
-
+                            <FadeLoader
+                                color={'hsl(46.82, 100%, 50%, 1)'}
+                                loading={true}
+                                cssOverride={override}
+                                size={100}
+                                aria-label="Loading Spinner"
+                                data-testid="loader"
+                            />
                         </div>
                         :
                         cards.map((data,i)=>{ 
                             return (
                                 <div className='card'> 
                                     <form>
-                                        <p>Наименование - {cards[i].name}</p>
-                                        <p>Цена - {cards[i].price}</p>
-                                        <p>Срок - {cards[i].maxMonths}</p>
-                                        <button className='buttonCard'>Приобрести</button>
+                                        <div className="card__top">
+                                            <a href="#" className="card__image">
+                                            {/* <img 
+                                                src="./image/iphone-14-pro-max-gold.png"
+                                                alt="Apple IPhone 14 PRO Max Gold"
+                                            /> */}
+                                            </a>
+                                        </div>
+                                        <div className="card__bottom">
+                                            <div className="card__names">
+                                                <div className="card__name">{cards[i].name}</div>
+                                            </div>
+                                            <div className="card__title">
+                                                Цена - {cards[i].price} 
+                                                <br/>
+                                                Срок - {cards[i].maxMonths} месяцев
+                                            </div>
+                                            <NavLink to="/comform"><button className="card__add">В корзину</button></NavLink>
+                                        </div>
                                     </form>
                                 </div>
                         )})
                     }
                 </div> 
-            </main>
+            </div>
         )
           
 }
