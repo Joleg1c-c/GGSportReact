@@ -1,11 +1,18 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, CSSProperties } from 'react';
 import Cookies from 'universal-cookie';
 import { jwtDecode } from "jwt-decode";
 import { redirect } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from 'react';
+import { FadeLoader } from 'react-spinners';
 
+const override: CSSProperties = {
+    display: "center",
+    margin: "0 auto",
+    borderColor: "hsl(46.82, 100%, 50%, 1)",
+};
+  
 
 function AppLogin() {
     const navigate = useNavigate();
@@ -21,22 +28,23 @@ function AppLogin() {
     var error = "";
     const cookies = new Cookies();
 
-    
+    const [loading, setLoad] = useState(false)
     const [post, setPost] = useState({
         email: '',
         password: ''  
     })
     
     function popitRegister(event) {
+        setLoad(true)
         event.preventDefault()  
         axios.put(baseURLlogin, post)
         .then((res) => {
             console.log(res)
             token = res.data.token
             console.log(token)
-            makeToken()
             makeNoErrorEntrance()
             login(token)
+            setLoad(false)
             window.location.reload();
         })
         .catch(function(err) {
@@ -52,16 +60,13 @@ function AppLogin() {
             } else{
                 console.log("Error:", err.message);
             }
+            setLoad(false)
             console.log(err);
         } )
     }
     
     const makePost = (event) =>{
         setPost({...post, [`${event.target.name}`]: event.target.value})
-    }
-    
-    function makeToken(){
-        document.getElementById("token").innerHTML = "Вы вошли!";
     }
     
     function makeErrorEntrance(){
@@ -71,10 +76,6 @@ function AppLogin() {
     function makeNoErrorEntrance(){
         document.getElementById("errorcum").innerHTML = "";
     }
-
-    // const logout = () =>{
-    //     cookies.remove("jwt_token")
-    // }
 
     const login = (jwt_token) => {
         const decoded = jwtDecode(jwt_token)
@@ -88,22 +89,6 @@ function AppLogin() {
         console.log(ansv !== undefined)
         return (ansv !== undefined)
     }
-    
-    // function getClient(event) {
-    //     const jsonToken = {
-    //         headers: {
-    //             "accept": "*/*",
-    //             "Authorization": "Bearer " + cookies.get("jwt_token")
-    //         }
-    //     }
-    //     console.log(jsonToken);
-    //     event.preventDefault()  
-    //     axios.get("http://www.ggsport.somee.com/Client", jsonToken)
-    //     .then((res) => {
-    //         console.log(res)
-    //     })
-    //     .catch(function(err) {console.log(err);} )
-    // }
 
     return (
         <main>
@@ -122,13 +107,28 @@ function AppLogin() {
                     <br/>
                     <button id ="login">Войти</button>
 
-                    <br/><br/><br/>
-                    <p id = "token">вы не вошли!</p>
+                    {loading ? 
+                    <div>
+                        <br/>
+                        <FadeLoader
+                            color={'hsl(46.82, 100%, 50%, 1)'}
+                            loading={true}
+                            cssOverride={override}
+                            size={100}
+                            aria-label="Loading Spinner"
+                            data-testid="loader"
+                        />
+                    </div>
+                    :
+                    <div>
+
+                    </div>
+                    }
 
                 </form>
-                    <form onSubmit={isLogin}>
+                    {/* <form onSubmit={isLogin}>
                         <button id ="info3" >проверить печеньку</button>
-                    </form>
+                    </form> */}
             </div>
 
         </main>
