@@ -46,7 +46,7 @@ function AppCards() {
                 </div>
                 <div className='back_cards'>
                     <br/>
-                    <h1>Клубные карты</h1>
+                    <h1>КЛУБНЫЕ КАРТЫ</h1>
                     <div className="cards">
                         {
                             cards.length === 0 ?
@@ -78,9 +78,9 @@ function AppCards() {
                                                     <div className="card__name">{cards[i].name}</div>
                                                 </div>
                                                 <div className="card__title">
-                                                    Цена - {cards[i].price} 
+                                                    Цена: {cards[i].price} 
                                                     <br/>
-                                                    Срок - {cards[i].maxMonths} месяцев
+                                                    Срок: {cards[i].maxMonths} месяцев
                                                 </div>
                                                 <NavLink to="/comform"><button className="card__add">В корзину</button></NavLink>
                                             </div>

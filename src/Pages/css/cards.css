@@ -1,7 +1,7 @@
 .card {
     width: 300px;
     min-height: 350px;
-    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.33);
+    box-shadow: 1px 2px 4px hsl(46.82, 100%, 50%, 1);
     display: flex;
     flex-direction: column; /* Размещаем элементы в колонку */
     border-radius: 4px;
@@ -11,10 +11,10 @@
   }
   
   /* При наведении на карточку - меняем цвет тени */
-  /* .card:hover {
+  .card:hover {
     box-shadow: 4px 8px 16px hsl(46.82, 100%, 50%, 1)   ;
   }
-   */
+  
   .card__top {
     flex: 0 0 220px; /* Задаем высоту 220px, запрещаем расширение и сужение по высоте */
     position: relative;
@@ -69,7 +69,7 @@
   .card__name {
     font-weight: 700;
     font-size: 19px;
-    color: #414141;
+    color: #ffffff;
     display: flex;
     flex-wrap: wrap-reverse;
   }
@@ -103,7 +103,7 @@
     font-weight: 400;
     font-size: 17px;
     line-height: 150%;
-    color: #414141;
+    color: #ffffff;
   }
   
   /* .card__title:hover {
@@ -115,10 +115,11 @@
     width: 100%;
     font-weight: 400;
     font-size: 17px;
-    color: #000000;
+    color: hsl(46.82, 100%, 50%, 1);
     padding: 10px;
     text-align: center;
-    border: 1px solid #000000;
+    border: 1px solid hsl(46.82, 100%, 50%, 1);
+    background-color: hsl(0, 0%, 0%);
     border-radius: 4px;
     cursor: pointer; /* Меняем курсор при наведении */
     transition: 0.2s;
@@ -126,9 +127,9 @@
   }
   
   .card__add:hover {
-    border: 1px solid #000000;
-    background-color: #000000;
-    color: #fff;
+    border: 1px solid hsl(46.82, 100%, 50%, 1);
+    background-color: hsl(46.82, 100%, 50%, 1);
+    color: #000000;
   }
 
 
@@ -156,7 +157,11 @@
 }
 
 .home_page{
-  color: black;
-  background-color: #fff;
+  color: rgb(255, 255, 255);
+  background-color: #000000;
   min-height: 100vh;
+}
+
+h1{
+  color: hsl(46.82, 100%, 50%, 1);
 }
