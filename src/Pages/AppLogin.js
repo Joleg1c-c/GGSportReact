@@ -26,6 +26,7 @@ function AppLogin() {
     const baseURLlogin = "http://www.ggsport.somee.com/Authentication/Login";
     var token = "";
     var error = "";
+    var role = "";
     const cookies = new Cookies();
 
     const [loading, setLoad] = useState(false)
@@ -41,9 +42,11 @@ function AppLogin() {
         .then((res) => {
             console.log(res)
             token = res.data.token
+            role = res.data.role
             console.log(token)
+            console.log(role)
             makeNoErrorEntrance()
-            login(token)
+            login(token, role)
             setLoad(false)
             window.location.reload();
         })
@@ -77,11 +80,12 @@ function AppLogin() {
         document.getElementById("errorcum").innerHTML = "";
     }
 
-    const login = (jwt_token) => {
+    const login = (jwt_token, role) => {
         const decoded = jwtDecode(jwt_token)
         console.log(decoded)
-        
+
         cookies.set("jwt_token", jwt_token, {expires: new Date(decoded.exp * 1000)})
+        cookies.set("role", role, {expires: new Date(decoded.exp * 1000)})
     }
 
     const isLogin = () => {

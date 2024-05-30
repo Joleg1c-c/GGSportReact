@@ -144,9 +144,19 @@
     column-gap: 30px; /* Отступ между колонками */
     row-gap: 40px; /* Отступ между рядами */
     margin: 0 auto;
-}
+  }
+
 .back_cards{
-    background-color: #fff;
-    min-height: 100vh;
-    color: black;
+  min-height: 530px;
+}
+
+.main_foto{
+  width: 100%;
+  height: 100%;
+}
+
+.home_page{
+  color: black;
+  background-color: #fff;
+  min-height: 100vh;
 }

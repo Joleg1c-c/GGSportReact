@@ -40,51 +40,56 @@ function AppCards() {
     }
 
         return (
-            <div className='back_cards'>
-                <br/>
-                <h1>Клубные карты</h1>
-                <div className="cards">
-                    {
-                        cards.length === 0 ?
-                        <div>
-                            <FadeLoader
-                                color={'hsl(46.82, 100%, 50%, 1)'}
-                                loading={true}
-                                cssOverride={override}
-                                size={100}
-                                aria-label="Loading Spinner"
-                                data-testid="loader"
-                            />
-                        </div>
-                        :
-                        cards.map((data,i)=>{ 
-                            return (
-                                <div className='card'> 
-                                    <form>
-                                        <div className="card__top">
-                                            <a href="#" className="card__image">
-                                            {/* <img 
-                                                src="./image/iphone-14-pro-max-gold.png"
-                                                alt="Apple IPhone 14 PRO Max Gold"
-                                            /> */}
-                                            </a>
-                                        </div>
-                                        <div className="card__bottom">
-                                            <div className="card__names">
-                                                <div className="card__name">{cards[i].name}</div>
+            <div className='home_page'>
+                <div className='main_fotos'>
+                    <img className='main_foto' src={require("./img/main_foto_fix.jpeg")} alt="что-то пошло не так"></img>
+                </div>
+                <div className='back_cards'>
+                    <br/>
+                    <h1>Клубные карты</h1>
+                    <div className="cards">
+                        {
+                            cards.length === 0 ?
+                            <div>
+                                <FadeLoader
+                                    color={'hsl(46.82, 100%, 50%, 1)'}
+                                    loading={true}
+                                    cssOverride={override}
+                                    size={100}
+                                    aria-label="Loading Spinner"
+                                    data-testid="loader"
+                                    />
+                            </div>
+                            :
+                            cards.map((data,i)=>{ 
+                                return (
+                                    <div className='card'> 
+                                        <form>
+                                            <div className="card__top">
+                                                <a href="#" className="card__image">
+                                                {/* <img 
+                                                    src="./image/iphone-14-pro-max-gold.png"
+                                                    alt="Apple IPhone 14 PRO Max Gold"
+                                                /> */}
+                                                </a>
                                             </div>
-                                            <div className="card__title">
-                                                Цена - {cards[i].price} 
-                                                <br/>
-                                                Срок - {cards[i].maxMonths} месяцев
+                                            <div className="card__bottom">
+                                                <div className="card__names">
+                                                    <div className="card__name">{cards[i].name}</div>
+                                                </div>
+                                                <div className="card__title">
+                                                    Цена - {cards[i].price} 
+                                                    <br/>
+                                                    Срок - {cards[i].maxMonths} месяцев
+                                                </div>
+                                                <NavLink to="/comform"><button className="card__add">В корзину</button></NavLink>
                                             </div>
-                                            <NavLink to="/comform"><button className="card__add">В корзину</button></NavLink>
-                                        </div>
-                                    </form>
-                                </div>
-                        )})
-                    }
-                </div> 
+                                        </form>
+                                    </div>
+                            )})
+                        }
+                    </div> 
+                </div>
             </div>
         )
           
