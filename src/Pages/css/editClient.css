@@ -1,0 +1,22 @@
+.Regis {
+    /* background-color: white; */
+    align-items: center;
+}
+
+.editClientInfo{
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: -moz-fit-content;
+    width: fit-content;
+    align-content: stretch;
+}
+
+.editClientInfoBlock{
+    margin: 0px 10px;
+}
+
+/* .RegisConteiner{
+    visibility: "visible"
+} */

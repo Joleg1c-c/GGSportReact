@@ -13,12 +13,18 @@ body {
     justify-content: space-between;
     align-items: center;
     /* font-family: Arial, Helvetica, sans-serif; */
-    font-family: var(--heading-font-font-family);
-    font-weight: var(--heading-font-font-weight);
-    letter-spacing: var(--heading-font-letter-spacing);
     /* text-transform: var(--heading-font-text-transform); */
     overflow-x: hidden ;
     text-align:center;
+    /* font-family: "neue-haas-grotesk-text"; */
+    font-family: "Inter";
+}
+
+h1, h2, h3, h4{
+    /* font-family: var(--heading-font-font-family); */
+    /* font-weight: var(--heading-font-font-weight); */
+    letter-spacing: var(--heading-font-letter-spacing);
+    
 }
 
 input {
@@ -41,3 +47,10 @@ main {
     min-height: 100vh;
     position: relative;
 }
+
+@font-face {
+    font-family: "Inter";
+    src: local('Inter'), local('Inter-Regular'), local('Inter Regular'),
+         url("fonts/Inter-Regular.ttf") format("truetype");
+    font-weight: 400;
+}   

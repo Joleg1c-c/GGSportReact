@@ -10,6 +10,8 @@ import AppRegister from './Pages/AppRegister.js';
 import AppCards from './Pages/AppCards.js';
 import AppProfile from './Pages/AppProfile.js';
 import AppConfirm from './Pages/AppConfirm.js';
+import AppScheduler from './Pages/AppScheduler.js';
+import AppEditClient from './Pages/AppEditClient.js';
 
 function App(){
     return (
@@ -23,6 +25,8 @@ function App(){
                 <Route path='/regis' element={<AppRegister/>} />
                 <Route path='/profile' element={<AppProfile/>} />
                 <Route path='/comform' element={<AppConfirm/>} />
+                <Route path='/scheduler' element={<AppScheduler/>} />
+                <Route path='/editclient' element={<AppEditClient/>} />
             </Routes>
             <Footer/>
         </Router>

@@ -61,7 +61,7 @@ function AppCards() {
                                     />
                             </div>
                             :
-                            cards.map((data,i)=>{ 
+                            cards.map((data, i)=>{ 
                                 return (
                                     <div className='card'> 
                                         <form>
@@ -82,7 +82,7 @@ function AppCards() {
                                                     <br/>
                                                     Срок: {cards[i].maxMonths} месяцев
                                                 </div>
-                                                <NavLink to="/comform"><button className="card__add">В корзину</button></NavLink>
+                                                <NavLink to="/comform"><button className="card__add">Приобрести</button></NavLink>
                                             </div>
                                         </form>
                                     </div>

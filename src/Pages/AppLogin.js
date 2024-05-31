@@ -101,10 +101,10 @@ function AppLogin() {
 
                 <form onSubmit={popitRegister}>
                     <p>Логин</p>
-                    <input name = "email" onChange={makePost}></input>
+                    <input name = "email" onChange={makePost} type='email'></input>
 
                     <p>Пароль</p>
-                    <input name = "password" onChange={makePost}></input>
+                    <input name = "password" onChange={makePost} type='password'></input>
                     
                     
                     <p style={{color:"red"}} id ="errorcum"></p>

@@ -12,6 +12,7 @@ function Header() {
             <nav className='HeaderInfo'>
                 <NavLink to="/">Главная</NavLink>
                 <NavLink to="/about">О нас</NavLink>
+                <NavLink to="/scheduler">Расписание</NavLink>
             </nav>
 
                 <div className='auth'>

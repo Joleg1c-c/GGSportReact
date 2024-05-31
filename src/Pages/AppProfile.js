@@ -34,6 +34,10 @@ const AppProfile = () => {
         cookies.remove("jwt_token")
     }
 
+    const editInformation = () =>{
+        navigate("/editclient")
+    }
+
     const getCurrentInformation = () =>{
         const jsonToken = {
             headers: {
@@ -46,7 +50,7 @@ const AppProfile = () => {
         .then((res) => {
             const abc = res.data
             setInfo(abc)
-            console.log(abc)
+            console.log(info)
         })
         .catch(function(err) {console.log(err);} )
     }
@@ -76,15 +80,15 @@ const AppProfile = () => {
     return (
             <main>
                 <div>
-                    { info.length === 0 ?
+                    { info === undefined ?
                         <div>
-                        <FadeLoader
-                            color={'hsl(46.82, 100%, 50%, 1)'}
-                            loading={true}
-                            cssOverride={override}
-                            size={100}
-                            aria-label="Loading Spinner"
-                            data-testid="loader"
+                            <FadeLoader
+                                color={'hsl(46.82, 100%, 50%, 1)'}
+                                loading={true}
+                                cssOverride={override}
+                                size={100}
+                                aria-label="Loading Spinner"
+                                data-testid="loader"
                             />
                         </div>
                         :
@@ -92,19 +96,25 @@ const AppProfile = () => {
 
                             <h1>{info.firstName} {info.lastName }</h1>
                             <br/>
+                            {info.schedules !== undefined ?
+                                <p>количество записанных занятий - {info.schedules.length}</p>
+                                :
+                                <p></p>
+                            }
                             
-                            <form onSubmit={logout}>
-                                <button id ="info2" >Разлогиниться</button>
+                            <form type="button" onSubmit={editInformation}>
+                                <button id ="editInformation">Редактировать свою информацию</button>
                             </form>
+                            
                             <br/>
 
                             {/* Карта: */}
-                                {info.clubCard === null || info.clubCard === undefined ?
+                                {info.actualClubCard === null || info.actualClubCard === undefined ?
                                     <p>У вас нет карты</p>    
                                 :
                                     <div> 
-                                        {console.log(info.clubCard)}
-                                        <p>У вас есть карта - {info.clubCard.name}</p>
+                                        {console.log(info.actualClubCard)}
+                                        <p>У вас есть карта - {info.actualClubCard.name}</p>
                                         {/* <p>До - {info.clubCard.name}</p> */}
                                     </div>
                                 }
@@ -117,6 +127,10 @@ const AppProfile = () => {
                                         
                                 </div>
                             }
+                            <br/>
+                            <form onSubmit={logout}>
+                                <button id ="logout_Button" >Разлогиниться</button>
+                            </form>
                         </div>
                     }
                 </div>
