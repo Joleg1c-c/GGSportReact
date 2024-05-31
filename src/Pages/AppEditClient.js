@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import './css/editClient.css'
 
 function AppEditClient() {
     const navigate = useNavigate();
@@ -16,17 +17,17 @@ function AppEditClient() {
         <div className="AppEditClient">
             <div className='editClientInfo'>
                 <div className='editClientInfoBlock'>
-                    <p>Имя</p>
+                    <p className='editClientInfoBlock_p'>Имя</p>
                     <input name="firstName" onChange={makePost} type='name' required></input>
                 </div>
                 
                 <div className='editClientInfoBlock'>
-                    <p>Фамилия</p>
+                    <p className='editClientInfoBlock_p'>Фамилия</p>
                     <input name="lastName" onChange={makePost} type='lastname' required></input>
                 </div>
                 
                 <div className='editClientInfoBlock'>
-                    <p>Отчество</p>
+                    <p className='editClientInfoBlock_p'>Отчество</p>
                     <input name="patronymic" onChange={makePost} type='patronymic' required></input>
                 </div>
             </div>

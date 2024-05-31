@@ -22,8 +22,8 @@ function AppConfirm() {
     <main>
         <div className="Confirm">
             <form>
-                <h1> О нас </h1>
-                <img src={require('./img/strongman.jpeg')} alt='ss'/>
+                <h1> оформление карты </h1>
+                {/* <img src={require('./img/strongman.jpeg')} alt='ss'/> */}
                 <p>
                     Введите свои паспортные данные для приобретения покупки    
                 </p>

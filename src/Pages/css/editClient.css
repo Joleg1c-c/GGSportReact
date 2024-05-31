@@ -17,6 +17,15 @@
     margin: 0px 10px;
 }
 
+.editClientInfoBlock{
+    text-align: left;  
+}
+
+.editClientInfoBlock_p{
+    position: relative;
+    left: 20px;
+}
+
 /* .RegisConteiner{
     visibility: "visible"
 } */
