@@ -12,6 +12,7 @@ import AppProfile from './Pages/AppProfile.js';
 import AppConfirm from './Pages/AppConfirm.js';
 import AppScheduler from './Pages/AppScheduler.js';
 import AppEditClient from './Pages/AppEditClient.js';
+import AppSps from './Pages/AppSps.js';
 
 function App(){
     return (
@@ -27,6 +28,7 @@ function App(){
                 <Route path='/comform' element={<AppConfirm/>} />
                 <Route path='/scheduler' element={<AppScheduler/>} />
                 <Route path='/editclient' element={<AppEditClient/>} />
+                <Route path='/sps' element={<AppSps/>} />
             </Routes>
             <Footer/>
         </Router>

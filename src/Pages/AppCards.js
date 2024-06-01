@@ -1,14 +1,14 @@
 import React, {useState, useEffect, CSSProperties} from 'react';
 import './css/cards.css'
 import axios from 'axios';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FadeLoader } from 'react-spinners';
 
 const override: CSSProperties = {
     display: "center",
     margin: "0 auto",
     borderColor: "hsl(46.82, 100%, 50%, 1)",
-  };
+};
   
 
 function AppCards() {
@@ -32,6 +32,10 @@ function AppCards() {
             })
        
     }
+
+    // const toConformPage = (id) =>{
+    //     navigate("/comform", { state: id })
+    // }
 
     const handleadd=()=>{
         // const abc = [...cards, {name:"Da"}]
@@ -78,11 +82,11 @@ function AppCards() {
                                                     <div className="card__name">{cards[i].name}</div>
                                                 </div>
                                                 <div className="card__title">
-                                                    Цена: {cards[i].price} 
+                                                    Цена: {cards[i].price} ₽
                                                     <br/>
                                                     Срок: {cards[i].maxMonths} месяцев
                                                 </div>
-                                                <NavLink to="/comform"><button className="card__add">Приобрести</button></NavLink>
+                                                <Link to="/comform" state={{card:cards[i]}}><button className="card__add">Приобрести</button></Link>
                                             </div>
                                         </form>
                                     </div>
