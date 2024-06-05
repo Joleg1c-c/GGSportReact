@@ -9,10 +9,17 @@ const override: CSSProperties = {
     margin: "0 auto",
     borderColor: "hsl(46.82, 100%, 50%, 1)",
 };
+
+const imgCards = [
+    require("./img/Karta_master.png"),
+    require("./img/Karta_boss.png"),
+    require("./img/Karta_slave.png"),
+]
   
 
 function AppCards() {
     const [cards, setCards] = useState([]) 
+    const [load, setLoad] = useState(true) 
 
     useEffect(() => {
         getCards();
@@ -25,10 +32,14 @@ function AppCards() {
             .then((res) => {
                 console.log(res)
                 for (var i = 0; i < res.data.length; i++) {
-                    const abc = [...cards, res.data[i]]
+                    // const abc = [...cards, res.data[i]]
+                    var abc = cards
+                    abc.push(res.data[i])
                     setCards(abc)
                     console.log(abc)
                 }
+                setLoad(false)
+                console.log()
             })
        
     }
@@ -46,14 +57,14 @@ function AppCards() {
         return (
             <div className='home_page'>
                 <div className='main_fotos'>
-                    <img className='main_foto' src={require("./img/main_foto_fix.jpeg")} alt="что-то пошло не так"></img>
+                    <img className='main_foto' src={require("./img/main_foto.jpg")} alt="что-то пошло не так"></img>
                 </div>
                 <div className='back_cards'>
                     <br/>
                     <h1>КЛУБНЫЕ КАРТЫ</h1>
                     <div className="cards">
                         {
-                            cards.length === 0 ?
+                            load ?
                             <div>
                                 <FadeLoader
                                     color={'hsl(46.82, 100%, 50%, 1)'}
@@ -70,12 +81,13 @@ function AppCards() {
                                     <div className='card'> 
                                         <form>
                                             <div className="card__top">
-                                                <a href="#" className="card__image">
-                                                {/* <img 
-                                                    src="./image/iphone-14-pro-max-gold.png"
-                                                    alt="Apple IPhone 14 PRO Max Gold"
-                                                /> */}
-                                                </a>
+                                                {/* <a href="#" className="card__image"> */}
+                                                <img 
+                                                    className="card__image"
+                                                    src={imgCards[i]}
+                                                    alt=""
+                                                />
+                                                {/* </a> */}
                                             </div>
                                             <div className="card__bottom">
                                                 <div className="card__names">

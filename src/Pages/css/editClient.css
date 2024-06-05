@@ -26,6 +26,12 @@
     left: 20px;
 }
 
+.editClientInfoBlock1{
+    display: grid;
+}
+.editClientInfoBlock22{
+    margin-bottom: 10px;
+}
 /* .RegisConteiner{
     visibility: "visible"
 } */

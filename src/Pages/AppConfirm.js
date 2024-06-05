@@ -29,14 +29,14 @@ function AppConfirm() {
         <div className="Confirm">
             <form>
                 <h1> ОФОРМЛЕНИЕ КАРТЫ </h1>
-                <p>Вы хотите приобрести карту {state.card.name}</p>
+                <p>Вы хотите приобрести карту {state.card.name}?</p>
                 {/* <img src={require('./img/strongman.jpeg')} alt='ss'/> */}
-                <p>
+                {/* <p>
                     Введите свои паспортные данные для приобретения покупки    
-                </p>
-                <p>стоимость - {state.card.price} ₽</p>
+                </p> */}
+                <p>стоимость - {state.card.price} $</p>
 
-                <p>Внимание, с вашей карты снимется {state.card.price} ₽!</p>
+                <p>Внимание, с вашей карты снимется {state.card.price} $!</p>
                 <Link to="/sps" state={{id:state.card.id}}>
                     {/* <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer"> */}
                             <button type="button" onClick={()=>window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ','_blank', 'rel=noopener noreferrer')}>Приобрести</button>
